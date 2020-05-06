@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../static/bootstrap.min.css" crossorigin="anonymous">
+
+    <title>Books</title>
+  </head>
+  <body>
+    <div class="container mt-3">
+      <nav aria-label="...">
+        <ul class="pagination">
+          <li class="page-item {% if not prev_url %}disabled{% endif %}">
+            <a class="page-link" href="{{ prev_url }}" tabindex="-1" aria-disabled="true">Previous</a>
+          </li>
+
+          {% for n in range(1,11) %}
+            {% if page_number == n %}
+              <li class="page-item active" aria-current="page">
+                <a class="page-link" href="./index{{ n }}.html">{{ n }} <span class="sr-only">(current)</span></a>
+              </li>
+            {% elif n > (page_number-2) and n < (page_number+2) %}
+              <li class="page-item">
+                <a class="page-link" href="./index{{ n }}.html">{{ n }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+
+          <li class="page-item {% if not next_url %}disabled{% endif %}">
+            <a class="page-link" href="{{ next_url }}">Next</a>
+          </li>
+        </ul>
+      </nav>
+
+      {% for book_pair in books %}
+        <div class="row mb-3">
+          <div class="col-6">
+            <div class="card mb-6 h-100" style="max-width: 540px;">
+              <div class="row">
+                <div class="col-md-4">
+                  <img src="../{{ book_pair[0].img_src }}" class="card-img" alt="{{ book_pair[0].title }}">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ book_pair[0].title }}</h5>
+                    <p class="card-text"><small class="text-muted">{{ book_pair[0].author }}</small></p>
+                    <p>
+                    {% for genre in book_pair[0].genres %}
+                    <span class="badge badge-secondary">{{genre}}</span>
+                    {% endfor %}
+                    </p>
+                    <p><a href="../{{ book_pair[0].book_path}}" target="_blank">Читать</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% if book_pair[1]%}
+            <div class="col-6">
+              <div class="card mb-6 h-100" style="max-width: 540px;">
+                <div class="row">
+                  <div class="col-md-4">
+                    <img src="../{{ book_pair[1].img_src }}" class="card-img" alt="{{ book_pair[1].title }}">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ book_pair[1].title }}</h5>
+                      <p class="card-text"><small class="text-muted">{{ book_pair[1].author }}</small></p>
+                      <p>
+                      {% for genre in book_pair[1].genres %}
+                      <span class="badge badge-secondary">{{genre}}</span>
+                      {% endfor %}
+                      </p>
+                      <p><a href="../{{ book_pair[1].book_path}}" target="_blank">Читать</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../static/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="../static/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="../static/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
