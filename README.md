@@ -31,7 +31,7 @@
 
 ### Библиотека онлайн
 При наличии доступа в Интернет можно пользоваться библиотекой без установки по ссылке 
-[https://killla.github.io/books/](https://killla.github.io/books/)
+[https://killla.github.io/books/](https://killla.github.io/books/pages/index1.html)
 
 ### Цель проекта
 
