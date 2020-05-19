@@ -1,7 +1,9 @@
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from livereload import Server, shell
 from more_itertools import chunked
+from pathlib import Path
 import json, math, os
+from pprint import pprint
 
 
 env = Environment(
@@ -35,6 +37,14 @@ def render_page(page_number, count_of_page, book_on_page, books):
         file.write(rendered_page)
 
 
+def delete_old_pages(count_of_page):
+    for file in Path('.').glob('pages/index*.html'):
+        file_number = str(file)
+        file_number = int(file_number.replace('pages/index', '').replace('.html', ''))
+        if file_number > count_of_page:
+            os.remove(file)
+
+
 def render_pages():
     book_on_page = 10
 
@@ -51,6 +61,7 @@ def render_pages():
     rendered_page = template.render(page_count = count_of_page)
     with open('index.html', 'w', encoding="utf8") as file:
         file.write(rendered_page)
+    delete_old_pages(count_of_page+1)
 
 
 if __name__ =='__main__':

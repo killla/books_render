@@ -4,9 +4,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../static/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/bootstrap.min.css">
 
     <title>Books</title>
   </head>
@@ -42,7 +42,7 @@
             <div class="card mb-6 h-100" style="max-width: 540px;">
               <div class="row">
                 <div class="col-md-4">
-                  <img src="../{{ book_pair[0].img_src }}" class="card-img" alt="{{ book_pair[0].title }}">
+                  <img src="../{{ book_pair[0].img_src|urlencode }}" class="card-img" alt="{{ book_pair[0].title }}">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
@@ -53,7 +53,7 @@
                     <span class="badge badge-secondary">{{genre}}</span>
                     {% endfor %}
                     </p>
-                    <p><a href="../{{ book_pair[0].book_path}}" target="_blank">Читать</a></p>
+                    <p><a href="../{{ book_pair[0].book_path|urlencode }}" target="_blank">Читать</a></p>
                   </div>
                 </div>
               </div>
@@ -64,7 +64,7 @@
               <div class="card mb-6 h-100" style="max-width: 540px;">
                 <div class="row">
                   <div class="col-md-4">
-                    <img src="../{{ book_pair[1].img_src }}" class="card-img" alt="{{ book_pair[1].title }}">
+                    <img src="../{{ book_pair[1].img_src|urlencode }}" class="card-img" alt="{{ book_pair[1].title }}">
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
@@ -75,7 +75,7 @@
                       <span class="badge badge-secondary">{{genre}}</span>
                       {% endfor %}
                       </p>
-                      <p><a href="../{{ book_pair[1].book_path}}" target="_blank">Читать</a></p>
+                      <p><a href="../{{ book_pair[1].book_path|urlencode }}" target="_blank">Читать</a></p>
                     </div>
                   </div>
                 </div>
@@ -88,8 +88,8 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../static/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="../static/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="../static/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="../static/jquery-3.3.1.slim.min.js"></script>
+    <script src="../static/popper.min.js"></script>
+    <script src="../static/bootstrap.min.js"></script>
   </body>
 </html>
